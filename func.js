@@ -19,8 +19,6 @@ const generateMeme = () => {
 
 memeButton.addEventListener("click", generateMeme)
 
-generateMeme();
-
 function capture() {
   const captureElement = document.querySelector('#capture')
   html2canvas(captureElement)
@@ -41,3 +39,5 @@ function capture() {
 
 const btn = document.querySelector('#btn')
 btn.addEventListener('click', capture)
+
+generateMeme();
