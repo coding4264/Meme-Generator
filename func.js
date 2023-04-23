@@ -42,8 +42,4 @@ function capture() {
 const btn = document.querySelector('#btn')
 btn.addEventListener('click', capture)
 
-
-const btn = document.querySelector('#btn')
-btn.addEventListener('click', capture)
-
 generateMeme();
