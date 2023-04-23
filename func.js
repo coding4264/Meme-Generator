@@ -20,26 +20,27 @@ const generateMeme = () => {
 memeButton.addEventListener("click", generateMeme)
 
 function capture() {
-  const captureElement = document.querySelector('#capture')
+  const captureElement = document.querySelector('#capture');
+  captureElement.style.display = 'block';
   html2canvas(captureElement)
     .then(canvas => {
-      canvas.style.display = 'none'
-      document.body.appendChild(canvas)
-      return canvas
+      canvas.style.display = 'none';
+      document.body.appendChild(canvas);
+      return canvas;
     })
     .then(canvas => {
-      setTimeout(() => {
-        const image = canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream')
-        const a = document.createElement('a')
-        a.setAttribute('download', 'my-image.png')
-        a.setAttribute('href', image)
-        a.click()
-        canvas.remove()
-      }, 1000) // Delay in milliseconds
-    })
+      const image = canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream');
+      const a = document.createElement('a');
+      a.setAttribute('download', 'my-image.png');
+      a.setAttribute('href', image);
+      a.click();
+      captureElement.style.display = 'none'; // Restore the original style
+      canvas.remove();
+    });
 }
 
-const btn = document.querySelector('#btn')
-btn.addEventListener('click', capture)
+const btn = document.querySelector('#btn');
+btn.addEventListener('click', capture);
+
 
 generateMeme();
