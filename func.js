@@ -28,14 +28,20 @@ function capture() {
       return canvas
     })
     .then(canvas => {
-      const image = canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream')
-      const a = document.createElement('a')
-      a.setAttribute('download', 'my-image.png')
-      a.setAttribute('href', image)
-      a.click()
-      canvas.remove()
+      setTimeout(() => {
+        const image = canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream')
+        const a = document.createElement('a')
+        a.setAttribute('download', 'my-image.png')
+        a.setAttribute('href', image)
+        a.click()
+        canvas.remove()
+      }, 1000) // Delay in milliseconds
     })
 }
+
+const btn = document.querySelector('#btn')
+btn.addEventListener('click', capture)
+
 
 const btn = document.querySelector('#btn')
 btn.addEventListener('click', capture)
